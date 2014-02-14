@@ -1,3 +1,5 @@
+								DAY 1 
+
 spent a few hours understanding the problem at hand, and learning about the basic keywords used.
 
 setting up stanford NLP core with python extension. https://bitbucket.org/torotoki/corenlp-python
@@ -22,6 +24,20 @@ Tested it with other articles. great results so far.
 >>> cProfile.run(server.parse(data[20]['description']))
          2 function calls in 0.000 seconds
 
+===-===
 Played around with the parsed data.
 We get 2 keys in 'coref' and 'sentences' containing lists.
+each element in the 'sentences' list is a dict containing [u'parsetree', u'text', u'dependencies', u'words', u'indexeddependencies'] 
+
+words ==> list of words
+each word and it related data canbe found here.
+smaple :-
+result['sentences'][0]['words'][0]
+[u'It', {u'NamedEntityTag': u'O', u'CharacterOffsetEnd': u'2', u'CharacterOffsetBegin': u'0', u'PartOfSpeech': u'PRP', u'Lemma': u'it'}]
+
+required ==> result['sentences'][0]['words'][0][2]['NamedEntityTag']
+
+for each word whose NamedEntityTag value is not 'O' is to be counted and recorded.
+
+
 
