@@ -1,0 +1,27 @@
+spent a few hours understanding the problem at hand, and learning about the basic keywords used.
+
+setting up stanford NLP core with python extension. https://bitbucket.org/torotoki/corenlp-python
+
+- The extension worked with only 2013 version, the developer forgot to update for 2014. Fixed that by messing with the server script a bit.
+
+- stanford NLP memory limit was set to xmx3g that caused heap error in java. Changed that too xmx2g for now.
+
+- test runs with a single article and Jsonrpc server running stanford NLP. It works.
+Problem
+-- It takes too much time at the moment even for 1 article.
+	
+Changed the python wrapper to https://github.com/relwell/stanford-corenlp-python which works faster then torotoki's
+Tried running the server.parse command with 1 article
+Results for cProfile.run(server.parse(data[2]['description']))
+>>> cProfile.run(server.parse(data[2]['description']))
+        2 function calls in 0.001 seconds
+
+Tested it with other articles. great results so far.
+>>> cProfile.run(server.parse(data[0]['description']))
+         2 function calls in 0.001 seconds
+>>> cProfile.run(server.parse(data[20]['description']))
+         2 function calls in 0.000 seconds
+
+Played around with the parsed data.
+We get 2 keys in 'coref' and 'sentences' containing lists.
+
