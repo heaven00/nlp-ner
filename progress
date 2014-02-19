@@ -39,5 +39,9 @@ required ==> result['sentences'][0]['words'][0][2]['NamedEntityTag']
 
 for each word whose NamedEntityTag value is not 'O' is to be counted and recorded.
 
+===-===
+I think weird problems that I cant find the reasons for deserve a separate place.
+
+1. Whenever a separate configuration other then the default config is used the server crashes. So at the moment cannot use anything else but the default configuration.
 
 
